@@ -19,6 +19,10 @@ namespace myresume
 
       public static IWebHost BuildWebHost(string[] args) =>
           WebHost.CreateDefaultBuilder(args)
+                 .UseKestrel(options =>
+                 {
+                     options.Listen(System.Net.IPAddress.Any, 5000);
+                })
               .UseStartup<Startup>()
               .Build();
    }
